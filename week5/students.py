@@ -27,10 +27,25 @@ def search_students(dictionary, id_student):
         print(dictionary[id_student])
     else:
         print("No such student")
+def get_id_from_user():
+    user_answer = input("Please, insert the student id: ")
+    student_id = user_answer
+    user_answer = int(student_id)
+    try:
+        if len(student_id) < 9:
+            print("Invalid I-Number: too few digits")
+        elif len(student_id) > 9:
+            print("Invalid I-Number: too many digits")
+    except ValueError as value_err:
+        print(f"{value_err}")
+        print("Invalid I-Number")
+    return student_id
+
 def main():
     students = read_dictionary("week5/students.csv")
-    student_id = input("Please, insert the student id: ")
-    search_students(students, student_id)
+    student_id = get_id_from_user()
+    if len(student_id) == 9:        
+        search_students(students, student_id)
    
 if __name__ == "__main__":
     main()
