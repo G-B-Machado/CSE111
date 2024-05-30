@@ -67,7 +67,8 @@ def make_receipt(dict, filename):
     print(f"{today.strftime("%c")}")
 
 def get_discount(day, value):
-    if(day.strftime("%w") == 2 or day.strftime("%w") == 3 or day.strftime("%H") < 11):
+    
+    if(day.strftime("%w") == 2 or day.strftime("%w") == 3 or int(day.strftime("%H")) < 11):
         value = value - (value*0.1)
     return value
 
